@@ -1,12 +1,33 @@
 :root {
   color-scheme: light dark;
-  --bg: #0f172a;
-  --card: #111827;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #3b82f6;
-  --danger: #ef4444;
+
+  /* پایه تیره (Dark) */
+  --bg:        #0f172a;   /* پس‌زمینه‌ی صفحه */
+  --card:      #111827;   /* کارت‌ها/کانتینر */
+  --surface:   #0b1220;   /* ورودی/دکمه/آیتم */
+  --surface-2: #0e1526;   /* هاور/لِول دوم */
+  --border:    #334155;   /* بوردر طوسی-آبی */
+  --text:      #e5e7eb;   /* متن اصلی */
+  --muted:     #9ca3af;   /* متن کمرنگ */
+  --accent:    #3b82f6;   /* آبی */
+  --danger:    #ef4444;   /* قرمز */
+  --shadow:    rgba(0,0,0,.2);
 }
+
+:root.light {
+  /* پایه روشن (Light) */
+  --bg:        #f1f5f9;   /* slate-100 */
+  --card:      #ffffff;   /* سفید خالص */
+  --surface:   #f8fafc;   /* slate-50 */
+  --surface-2: #eef2f7;   /* خاکستری خیلی روشن */
+  --border:    #d1d5db;   /* gray-300 */
+  --text:      #0f172a;   /* slate-900 */
+  --muted:     #475569;   /* slate-600 */
+  --accent:    #2563eb;   /* blue-600 */
+  --danger:    #dc2626;   /* red-600 */
+  --shadow:    rgba(15, 23, 42, .1);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -29,7 +50,7 @@ body {
   padding: 24px;
   background: var(--card);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px var(--shadow);
 }
 .header {
   display: flex;
@@ -51,17 +72,20 @@ body {
   flex: 1;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid #334155;
-  background: #0b1220;
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text);
 }
 .btn {
   padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid #334155;
-  background: #0b1220;
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text);
   cursor: pointer;
+}
+.btn:hover {
+  background: var(--surface-2);
 }
 .btn[disabled] {
   opacity: 0.5;
@@ -93,9 +117,9 @@ body {
   gap: 8px;
   align-items: center;
   padding: 10px 12px;
-  border: 1px solid #334155;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #0b1220;
+  background: var(--surface);
 }
 .item.done .text {
   text-decoration: line-through;
@@ -117,8 +141,8 @@ body {
   width: 100%;
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid #334155;
-  background: #0b1220;
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text);
 }
 .empty {
@@ -126,11 +150,9 @@ body {
   color: var(--muted);
   padding: 16px 0;
 }
-
 .row label {
   color: var(--muted);
 }
-
 .filters {
   display: flex;
   gap: 8px;
@@ -138,35 +160,29 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
 .filters-left {
   display: flex;
   gap: 8px;
 }
-
 .filters-center {
   flex: 1;
   max-width: 200px;
 }
-
 .filters-right {
   display: flex;
   gap: 8px;
 }
-
 .search-bar {
   position: relative;
 }
-
 .search-input {
   padding: 8px 28px 8px 10px;
   border-radius: 8px;
-  border: 1px solid #334155;
-  background: #0b1220;
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text);
   width: 100%;
 }
-
 .search-clear {
   position: absolute;
   right: 6px;
@@ -178,7 +194,6 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
-
 .sort-wrap {
   direction: rtl;
   display: flex;
@@ -188,9 +203,15 @@ body {
 .select {
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid #334155;
-  background: #0b1220;
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--text);
+}
+
+/* فوکِس */
+.input:focus, .edit-input:focus, .search-input:focus, .select:focus, .btn:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 /* حس درگ بهتر */
@@ -198,36 +219,31 @@ body {
   cursor: grabbing;
 }
 
+/* ریسپانسیو موبایل */
 @media (max-width: 480px) {
   .container {
     margin: 20px auto;
     padding: 16px;
     border-radius: 10px;
   }
-
   .row {
     flex-direction: column;
     gap: 6px;
   }
-
   .filters {
     flex-direction: column;
     align-items: stretch;
   }
-
   .filters-left, .filters-right, .filters-center {
     width: 100%;
     justify-content: center;
   }
-
   .filters-center {
     order: -1; /* سرچ بیاد بالا */
   }
-
   .btn, .input, .select {
     width: 100%;
   }
-
   .item {
     grid-template-columns: auto 1fr auto; /* حذف یک ستون اضافی در موبایل */
   }

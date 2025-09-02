@@ -7,10 +7,20 @@ import TodoList from "./components/TodoList";
 import SortControls from "./components/SortControls";
 import { sortTodos, type SortMode } from "./utils/sort";
 import "./index.css";
+import ThemeToggle from "components/ThemeToggle";
 
 export default function App() {
   // منطق تودوها از هوک اختصاصی
-  const { add, toggle, edit, remove, clearDone, remainingCount, byFilter, move } = useTodos();
+  const {
+    add,
+    toggle,
+    edit,
+    remove,
+    clearDone,
+    remainingCount,
+    byFilter,
+    move,
+  } = useTodos();
 
   // فیلتر وضعیت، جستجو و حالت مرتب‌سازی
   const [filter, setFilter] = useState<"all" | "active" | "done">("all");
@@ -21,7 +31,9 @@ export default function App() {
   const visibleTodos = useMemo(() => {
     const base = byFilter(filter);
     const searched = query.trim()
-      ? base.filter(t => t.text.toLowerCase().includes(query.trim().toLowerCase()))
+      ? base.filter((t) =>
+          t.text.toLowerCase().includes(query.trim().toLowerCase())
+        )
       : base;
     return sortTodos(searched, sortMode);
   }, [filter, query, byFilter, sortMode]);
@@ -33,8 +45,11 @@ export default function App() {
       {/* هدر */}
       <div className="header">
         <div className="title">لیست کارها (Todo)</div>
+        <ThemeToggle />
         <div className="counter">
-          {remainingCount === 0 ? "همه انجام شد 🎉" : `${remainingCount} کار باقی‌مانده`}
+          {remainingCount === 0
+            ? "همه انجام شد 🎉"
+            : `${remainingCount} کار باقی‌مانده`}
         </div>
       </div>
 
