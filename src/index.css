@@ -1,0 +1,199 @@
+:root {
+  color-scheme: light dark;
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #3b82f6;
+  --danger: #ef4444;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Noto Sans", "IRANSans", "Vazirmatn", Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+.container {
+  direction: rtl;
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 24px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: var(--text);
+}
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: var(--text);
+  cursor: pointer;
+}
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn.primary {
+  border-color: var(--accent);
+}
+.btn.danger {
+  border-color: var(--danger);
+}
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.counter {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.list {
+  display: grid;
+  gap: 8px;
+}
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0b1220;
+}
+.item.done .text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.text {
+  overflow-wrap: anywhere;
+}
+.item-actions {
+  display: flex;
+  gap: 6px;
+}
+.edit-input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: var(--text);
+}
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 16px 0;
+}
+
+.row label {
+  color: var(--muted);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.filters-left {
+  display: flex;
+  gap: 8px;
+}
+
+.filters-center {
+  flex: 1;
+  max-width: 200px;
+}
+
+.filters-right {
+  display: flex;
+  gap: 8px;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-input {
+  padding: 8px 28px 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: var(--text);
+  width: 100%;
+}
+
+.search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sort-wrap {
+  direction: rtl;
+  display: flex;
+  justify-content: flex-start;
+  margin: 8px 0 12px;
+}
+.select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: var(--text);
+}
+
+/* حس درگ بهتر */
+.list > div:active {
+  cursor: grabbing;
+}
