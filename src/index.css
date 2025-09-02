@@ -197,3 +197,38 @@ body {
 .list > div:active {
   cursor: grabbing;
 }
+
+@media (max-width: 480px) {
+  .container {
+    margin: 20px auto;
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters-left, .filters-right, .filters-center {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filters-center {
+    order: -1; /* سرچ بیاد بالا */
+  }
+
+  .btn, .input, .select {
+    width: 100%;
+  }
+
+  .item {
+    grid-template-columns: auto 1fr auto; /* حذف یک ستون اضافی در موبایل */
+  }
+}
